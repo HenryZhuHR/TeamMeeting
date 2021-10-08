@@ -1,0 +1,41 @@
+\section{图像去噪算法: Non-Local Mean 非局部均值滤波}
+
+
+
+\begin{frame}{Non-local Means 非局部均值滤波}
+    原始图像$v$的每个像素点$v(x)$经过滤波之后可以得到对应图像上的点$\tilde{u}(x)$
+    \begin{equation}
+        \tilde{u}(x)=\sum_{y\in \Omega_x} w(x,y)v(y)
+        \label{nl-mean}
+    \end{equation}    
+    公式\ref{nl-mean}中，$w(x,y)$是一个权重，表示在原始图像$v$中，像素$x$、$y$之间的相似性。$\Omega_x$是像素$x$的邻域。同时权重需要满足公式\ref{nl-mean-weight_condition}的条件
+    \begin{equation}
+        w(x,y)>0\quad and\quad \sum_{y\in \Omega_x} w(x,y)=1,\forall x\in \Omega,y\in \Omega_x
+        \label{nl-mean-weight_condition}
+    \end{equation}
+
+    对于每一个像素，其去噪后的结果等于其邻域中像素$y$的加权和，权重则是像素$x$、$y$之间的相似性。该邻域称为“搜索邻域”，其范围越大，可以找到相似的概率也就越大大，但是计算量也会增大。
+\end{frame}
+
+\begin{frame}{Non-local Means 非局部均值滤波}
+    用欧氏距离来衡量两个像素之间的相似性
+    \begin{equation}
+        w(x,y)=\frac{1}{n(x)} \exp(\frac{||V(x)-V(y)||_{2,a}^2}{h^2})
+    \end{equation}
+    $n(x)$是归一化因子，是所有权重和，使得满足公式\ref{nl-mean-weight_condition}中权重和为1的条件。
+
+    $V(x)$和$V(y)$分别是像素$x$和$y$的块(Patch)邻域，小于搜索邻域。
+    $||V(x)-V(y)||_{2,a}^2$是两个邻域的的\textbf{高斯加权欧氏距离}\footnote{求欧式距离的时候，距离块邻域的中心越近的权重越大，越远则越小，权重服从高斯分布，因此需要在距离上乘以一个高斯权重。}，高斯权重为：    
+    \begin{equation}
+        G(x,y)=\frac{1}{2\pi a^2}\exp(-\frac{(x^2+y^2)}{2a^2})
+    \end{equation}
+\end{frame}
+
+
+\begin{frame}{Non-local filter}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.65\textwidth]{docs/paperReading/Non-local/non-local-means.png}
+    \end{figure}
+\end{frame}
+

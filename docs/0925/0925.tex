@@ -1,0 +1,80 @@
+\section{根据攻击策略分类：优化}
+
+
+\begin{frame}{基于优化的攻击方法}
+    白盒攻击
+    \begin{itemize}
+        \item \textbf{L-BFGS}: 有目标攻击, Intriguing properties of neural networks
+        \item \textbf{DeepFool}: 无目标攻击, a simple and accurate method to fool deep neural networks
+        \item \textbf{UAP}: 无目标攻击, Universal adversarial perturbations
+        \item \textbf{CW}: 有/无目标攻击, Towards Evaluating the Robustness of Neural Networks
+    \end{itemize}
+
+    黑盒攻击
+    \begin{itemize}
+        \item \textbf{Grad.Est.}: 有/无目标攻击, Exploring the space of black-box attacks on deep neural networks
+        \item \textbf{ZOO}: 有/无目标攻击, ZOO:Zeroth pder optimization based black-box attacks to deep neural networks without training substitute models.
+        \item \textbf{IS}: 有/无目标攻击, Simple black-box adversarial perturbations on deep neural networks
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{基于优化的攻击方法}
+    需要解决的含约束条件的优化问题
+    \begin{equation}
+        \begin{aligned}
+            \textbf{Minimize }    & ||r||_2 \\
+            \textbf{subject to }  & f(x+r)=l \textbf{ or } f(x+r)\neq f(x) \\
+                                & x+r \in [0,1]^m
+        \end{aligned}
+    \end{equation}
+    求解满足约束条件的最小对抗扰动 $r$ ，就可以产生对抗样本 
+\end{frame}
+
+
+\begin{frame}{基于优化的攻击策略}
+
+    4种基于优化的白盒攻击 L-BFGS, CW, DeepFool, UAP
+    \begin{itemize}
+        \item \textbf{1. L-BFGS}: 有目标攻击
+    \end{itemize}
+    \begin{equation}
+        \textbf{Minimize } c \cdot ||r||_2 + loss_f(x+r,l) \textbf{ subject to } x+r \in [0,1]^m
+    \end{equation}
+    将对抗样本$x+r$经过分类器的预测输出定向为目标标签$l$
+
+    \begin{itemize}
+        \item \textbf{2. CW}: 有目标/无目标攻击
+    \end{itemize}  
+    \begin{equation}
+        \textbf{Minimize } ||r||_2 + c \cdot f(x+r) \textbf{ subject to } x+r \in [0,1]^m
+    \end{equation}
+    提出了7种目标函数 $f$ 来进行优化
+
+    
+\end{frame}
+
+\begin{frame}{基于优化的攻击策略}
+    \begin{itemize}
+        \item \textbf{3. DeepFool}: 无目标攻击
+    \end{itemize}    
+    \begin{equation}
+        \begin{aligned}
+            \textbf{Minimize }  & ||r||_2 \\
+            \textbf{subject to }& sign(f(x_0=r))\neq sign(f(x_0)) \\
+            or                  & \exists k:\omega_k^T(x_0+r)+b_k \geq \omega_{\hat{k}(x_0)}^T(x_0+r)+b_{\hat{k}(x_0)}
+        \end{aligned}
+    \end{equation}
+
+
+
+    \begin{itemize}
+        \item \textbf{3. UAP}: 无目标攻击
+    \end{itemize}       
+    \begin{equation}
+        \begin{aligned}
+            & \Delta v_i \leftarrow \arg\min\limits_{r} \text{ s.t. } \hat{k}(x_i+v+r)\neq \hat{k}(x_i) \\
+            & v \leftarrow \mathcal{P}_{p,\zeta}=\arg\min\limits_{v'} ||v-v'||_2 \text{ subject to } ||v'||_p\leq \zeta
+        \end{aligned}
+    \end{equation}
+\end{frame}

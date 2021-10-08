@@ -1,0 +1,94 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{ctex, hyperref}
+\usepackage{calligra}
+\usepackage[T1]{fontenc}
+\author{Heran Zhu}
+\title{Robust AI Project Team}
+\subtitle{Weekly Report}
+\institute{Electronic Information School, Wuhan University}
+\date{Sep 10 th, 2021}
+\usepackage{WHU}
+
+\usepackage{tcolorbox}
+
+% \usepackage{graphicx}
+% \usepackage{caption2}
+\usepackage{subfigure}
+% \usepackage{float}
+\usepackage{wrapfig}	% 图文混排
+\usepackage{multicol}	% 多列
+\usepackage{mathrsfs}	% 花体数学
+\usepackage{amsmath,amsthm,amsfonts,amssymb,bm}
+
+
+\usepackage[backend=bibtex,sorting=none]{biblatex}
+\addbibresource{ref.bib} %BibTeX数据文件及位置
+\setbeamerfont{footnote}{size=\tiny}
+\begin{document}
+
+\kaishu
+\begin{frame}
+	\titlepage
+	\begin{figure}[htb]
+		\begin{center}
+			\includegraphics[width=0.1\linewidth]{pic/whulogo.eps}
+		\end{center}
+	\end{figure}
+\end{frame}
+
+% \begin{frame}
+% \tableofcontents[sectionstyle=show,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
+% \end{frame}
+
+
+% \renewcommand{\thefootnote}{\fnsymbol{footnote}} %不用数字脚注
+
+% ----------------------------------------
+% 	--- Paper Reading ---
+% ----------------------------------------
+% Weakly Supervised Fine-grained Image Classification via 
+% 			   Correlation-guided Discriminative Learning
+% 基于相关引导判别学习的弱监督细粒度图像分类
+% Correlation-guided Discriminative Learning (CDL) model
+% \include{docs/paperReading/CDL.tex}
+% ----------------------------------------
+% Non-local
+% \include{docs/paperReading/Non-local.tex}
+% \include{docs/paperReading/Non-local-Mean.tex}
+% ----------------------------------------
+% DANet
+% \include{docs/paperReading/DANet.tex}
+% ----------------------------------------
+% SENet
+% \include{docs/paperReading/SENet.tex}
+% ----------------------------------------
+% CBAM
+% \include{docs/paperReading/CBAM.tex}
+% ----------------------------------------
+% CW attack
+% \include{docs/paperReading/CW_attack.tex}
+% ----------------------------------------
+% DeepFool attack
+% \include{docs/paperReading/deepfool.tex}
+% ----------------------------------------
+
+
+% ----------------------------------------
+% 2021
+% \include{docs/0806/experiment.tex}
+% \include{docs/0903/experiment.tex}
+\include{docs/0925/0925.tex}
+
+% \section{参考文献}
+% \begin{frame}[allowframebreaks]
+% 	\bibliography{ref}
+% 	\bibliographystyle{alpha}
+% \end{frame}
+
+\begin{frame}
+    \begin{center}
+        {\Huge Thanks!}
+    \end{center}
+\end{frame}
+
+\end{document}
