@@ -1,0 +1,58 @@
+\section{对抗训练实验结果}
+
+\begin{frame}{鲁棒模型}
+    \begin{table}[]
+        \begin{center}
+            \caption{干净样本测试集}
+            \begin{tabular}{cc|c}
+                \textbf{训练方法} & \textbf{训练数据集} & \textbf{准确率} \\
+                \hline
+                正常训练    & 原始干净样本               & \textbf{92.15} \% \\
+                PDG对抗训练 & 干净样本、重建样本          & 85.25 \% \\
+                PDG对抗训练 & 对抗样本、对抗样本的重建样本 & \textbf{89.30} \% \\
+            \end{tabular}
+        \end{center}
+    \end{table}
+    
+    \begin{table}[]
+        \begin{center}
+            \caption{PDG对抗样本测试集}
+            \begin{tabular}{cc|c}
+                \textbf{训练方法} & \textbf{训练数据集} & \textbf{准确率} \\
+                \hline
+                正常训练    & 原始干净样本               & 4.55 \% \\
+                PDG对抗训练 & 干净样本、重建样本          & 78.40 \% \\
+                PDG对抗训练 & 对抗样本、对抗样本的重建样本 & 83.55 \% \\
+            \end{tabular}
+        \end{center}
+    \end{table}    
+\end{frame}
+
+
+\begin{frame}{在鲁棒模型之前加入重建}
+    \begin{table}[]
+        \begin{center}
+            \caption{干净样本重建测试集}
+            \begin{tabular}{cc|c}
+                \textbf{训练方法} & \textbf{训练数据集} & \textbf{准确率} \\
+                \hline
+                正常训练    & 原始干净样本                & \textbf{90.15} \% \\
+                PDG对抗训练 & 干净样本、重建样本          & 83.75 \% \\
+                PDG对抗训练 & 对抗样本、对抗样本的重建样本 & \textbf{87.00} \% \\
+            \end{tabular}
+        \end{center}
+    \end{table}
+    
+    \begin{table}[]
+        \begin{center}
+            \caption{对抗样本重建测试集}
+            \begin{tabular}{cc|c}
+                \textbf{训练方法} & \textbf{训练数据集} & \textbf{准确率} \\
+                \hline
+                正常训练    & 原始干净样本                & \textbf{75.25} \% \\
+                PDG对抗训练 & 干净样本、重建样本          & 72.25 \% \\
+                PDG对抗训练 & 对抗样本、对抗样本的重建样本 & \textbf{82.05} \% \\
+            \end{tabular}
+        \end{center}
+    \end{table}    
+\end{frame}
